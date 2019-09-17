@@ -1,7 +1,7 @@
 ThisBuild / scalaVersion     := "2.13.0"
 ThisBuild / version          := "0.1.0-SNAPSHOT"
-ThisBuild / organization     := "com.gu"
-ThisBuild / organizationName := "Guardian News & Media"
+ThisBuild / organization     := "com.github.regiskuckaertz"
+ThisBuild / organizationName := "Regis Kuckaertz"
 ThisBuild / turbo            := true
 
 val commonSettings = Seq(
@@ -16,8 +16,8 @@ val commonSettings = Seq(
 def configure(n: String, p: Project) =
   p.settings(commonSettings).settings(name := n)
 
-lazy val helloWorld = configure("hello-world", project in (file("hello-world")))
+lazy val helloWorld = configure("ex01", project in (file("ex01")))
 
-lazy val chaining = configure("chaining", project in (file("chaining")))
+lazy val chaining = configure("ex02", project in (file("ex02")))
 
-lazy val async = configure("async", project in (file("async")))
+lazy val async = configure("ex03", project in (file("ex03")))
