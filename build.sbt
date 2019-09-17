@@ -16,8 +16,8 @@ val commonSettings = Seq(
 def configure(n: String, p: Project) =
   p.settings(commonSettings).settings(name := n)
 
-lazy val helloWorld = configure("ex01", project in (file("ex01")))
+lazy val ex01 = configure("ex01", project in (file("ex01")))
 
-lazy val chaining = configure("ex02", project in (file("ex02")))
+lazy val ex02 = configure("ex02", project in (file("ex02")))
 
-lazy val async = configure("ex03", project in (file("ex03")))
+lazy val ex03 = configure("ex03", project in (file("ex03")))
