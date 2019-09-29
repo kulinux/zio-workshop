@@ -1,4 +1,4 @@
-package com.gu.zio
+package com.github.regiskuckaert.zio
 
 import zio._
 import zio.console._

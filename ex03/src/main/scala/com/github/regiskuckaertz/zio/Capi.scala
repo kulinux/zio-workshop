@@ -1,4 +1,4 @@
-package com.gu.zio
+package com.github.regiskuckaert.zio
 
 import scala.sys.process._
 import zio.{UIO, ZIO}
