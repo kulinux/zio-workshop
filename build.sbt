@@ -21,3 +21,5 @@ lazy val ex01 = configure("ex01", project in (file("ex01")))
 lazy val ex02 = configure("ex02", project in (file("ex02")))
 
 lazy val ex03 = configure("ex03", project in (file("ex03")))
+
+lazy val ex04 = configure("ex04", project in (file("ex04")))

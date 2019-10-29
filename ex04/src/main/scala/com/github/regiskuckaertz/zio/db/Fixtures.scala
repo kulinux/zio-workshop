@@ -1,4 +1,5 @@
-package com.github.regiskuckaertz.zio.db
+package com.github.regiskuckaertz.zio
+package db
 
 private[db] object Fixtures {
   val users = List(
@@ -24,7 +25,7 @@ private[db] object Fixtures {
     Product(6, "Tomacco ")
   )
 
-  val sales = collection.mutable.List(
+  val sales = collection.mutable.ListBuffer(
     Sell(1, 2, 10),
     Sell(4, 4, 1),
     Sell(6, 5, 20),
