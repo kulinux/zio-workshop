@@ -16,5 +16,9 @@ object HelloApp extends App {
   final def run(args: List[String]) = helloWorld *> ZIO.succeed(0)
 
   /* Write a program that prints out a message to the console */
-  val helloworld: ZIO[???, ???, ???] = ???
+  val helloWorld: ZIO[App#Environment, Nothing, Int] =
+    ZIO.fromFunction(env => {
+      println("Hello World!!!")
+      0
+    })
 }
