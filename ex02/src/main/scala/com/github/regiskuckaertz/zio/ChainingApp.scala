@@ -15,10 +15,10 @@ object ChainingApp extends App {
   final def run(args: List[String]) = chainingAppMain *> ZIO.succeed(0)
 
   def chainingAppMain: ZIO[App#Environment, Nothing, Int] =
-    chainingApp.catchAll(_ => IO.succeed(-1))
+    chainingApp.catchAll(_ => UIO.succeed(-1))
 
   def fail = {
-    putStrLn("Error, dont mention this name again!!!") *> IO.succeed(-1)
+    putStrLn("Error, do not mention that name again!!!") *> UIO.succeed(-1)
   }
 
   def chainingApp: ZIO[Console, java.io.IOException, Int] =  for {
