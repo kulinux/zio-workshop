@@ -5,6 +5,8 @@ import zio._
 import zio.console._
 import zio.system._
 
+import zio.blocking.Blocking
+
 /**
  * Write a program that:
  * - reads the CAPI_TEST_KEY environment variable (https://static.javadoc.io/dev.zio/zio_2.12/1.0.0-RC11-1/zio/system/index.html)
@@ -17,5 +19,39 @@ import zio.system._
  *     occurence of an asynchronous exception (like the user hitting Ctrl-C).
  */
 object Main extends App {
-  final def run(args: List[String]) = ???
+
+
+  final def run(args: List[String]) = {
+    zio.fold(err => {
+        err.printStackTrace
+        println(s"ERROR $err")
+        1
+      },
+      suc => {
+        println(s"OK $suc")
+        0
+      }
+    )
+  }
+
+  
+  def readCapiKey(): RIO[App#Environment, String] =
+    system.env("CAPI_TEST_KEY").someOrFailException
+
+  def processInput(capi: Capi.Service[Any], input: String):
+    ZIO[Any with Blocking, Throwable, String] = {
+    input.split(" ")toList  match {
+      case "search" :: keyword :: _ => capi.search(keyword)
+      case "get" :: path :: _ => capi.article(path)
+      case _  => ???
+    }
+  }
+
+  val zio: ZIO[App#Environment, Throwable, Int] = for {
+    capiKey <- readCapiKey()
+    capi = Capi.make(capiKey)
+    _ <- console.putStrLn("Please, enter a command")
+    input <- console.getStrLn
+    _ <- processInput(capi.capi, input)
+  } yield 0
 }
